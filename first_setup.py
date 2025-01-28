@@ -1,8 +1,18 @@
 import requests
+import sys
 
 from util import *
 
-URL = "hxxp://xxxxxxxxxxxxx"
+CTF_NAME = "CTF_TEST" # Change me
+CTF_DESCRIPTION = "CTF_TEST" # Change me
+ADMIN_USERNAME = "admin" # Change me
+ADMIN_PASSWORD = "admin" # Change me
+
+if len(sys.argv) < 2:
+    print("Usage: python3 first_setup.py <CTFD_URL>")
+    sys.exit(0)
+
+URL = sys.argv[1]
 
 def main():
     print("[!] starting")
@@ -24,11 +34,11 @@ def main():
     body = f"""--{boundary}
 Content-Disposition: form-data; name="ctf_name"
 
-CTF_TEST
+{CTF_NAME}
 --{boundary}
 Content-Disposition: form-data; name="ctf_description"
 
-CTF_TEST
+{CTF_DESCRIPTION}
 --{boundary}
 Content-Disposition: form-data; name="user_mode"
 
@@ -60,15 +70,15 @@ Content-Disposition: form-data; name="team_size"
 --{boundary}
 Content-Disposition: form-data; name="name"
 
-admin
+{ADMIN_USERNAME}
 --{boundary}
 Content-Disposition: form-data; name="email"
 
-admin@admin.admin
+admin@example.org
 --{boundary}
 Content-Disposition: form-data; name="password"
 
-admin
+{ADMIN_PASSWORD}
 --{boundary}
 Content-Disposition: form-data; name="ctf_logo"; filename=""
 Content-Type: application/octet-stream
