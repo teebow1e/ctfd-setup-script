@@ -7,7 +7,7 @@ from util import *
 USERNAME = "admin"
 PASSWORD = "admin"
 
-URL = "hxxp://xxxxxxxxxxxxx"
+URL = "http://192.168.194.130"
 
 def main():
     s = requests.Session()
